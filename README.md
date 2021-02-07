@@ -13,9 +13,14 @@
   <th>Description</th>
  </tr>
  <tr>
-  <td>/combat <new delay></td>
-  <td>combatchanger.command.use</td>
-  <td>Change the pvp delay.</td>
+  <td>/ranks <new delay></td>
+  <td>none</td>
+  <td>View ranks.</td>
+ </tr>
+ <tr>
+  <td>/rankup <new delay></td>
+  <td>none</td>
+  <td>Evolve ranks.</td>
  </tr>
 </table>
 
