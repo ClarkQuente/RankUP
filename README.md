@@ -24,6 +24,8 @@ private void onPlayerRankUP(PlayerRankUPEvent event) {
 }
 ```
 
+<h3>Installing with Maven</h3>
+
 ```xml
 <dependency>
     <groupId>com.github.SkyLinx</groupId>
