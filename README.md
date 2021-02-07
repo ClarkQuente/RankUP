@@ -1,2 +1,2 @@
 # RankUP
-Evolve ranks in a simple way.
+👌 Create rank evolutions for your server.
