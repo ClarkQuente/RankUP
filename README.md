@@ -28,8 +28,7 @@
 
 <h3>Configuration Files</h3>
 
-<h4>Configuration Files</h4>
-config.yml
+<h4>config.yml</h4>
 
 ```yml
 settings:
@@ -68,6 +67,46 @@ view:
       display: "&cCancel"
       description:
         - "&7Click to cancel."
+```
+
+<h4>ranks.yml</h4>
+
+```yml
+ranks:
+  Bandit:
+    name: "Bandit"
+    tag: "&c[Bandit]"
+    priority: 1
+    cost: 50
+    commands:
+      - "100:say {player} rank up {oldRank} to {newRank}"
+      - "100:say {player} rank up {oldRankTag} to {newRankTag}"
+    actions:
+      - "[TITLE]->&d{player}{nl}&7RankUP from {oldRank} &7to {newRank}"
+      - "[ACTIONBAR]->&c{player} &7rankup from {oldRankTag} &7to {newRankTag}"
+    icon:
+      skull_texture: "2fe67f9f8b1bbf80c54e023bfb35404067ca9762b45fadfcf0febecc762a6536"
+      quantity: 1
+      slot: 10
+      display: "&cBandit"
+      description:
+        - "&fCost: &2$&a{cost}"
+```
+
+<h4>messages.yml</h4>
+
+```yml
+already_last_rank: "&cYou are already in the last rank."
+without_coins: "&cYou don't have enough coins to rank up. &7(Need: &2$&f{cost}&7)"
+chat_ranks:
+  header:
+    - "&c<------------------------>"
+  footer:
+    - "&c<------------------------>"
+  cost: "&7(&2$&a{cost}&7)"
+  no_cost: ""
+  last_rank: "&cLast Rank"
+  rank_info: " &d> {rankTag} &e➟ {nextRankTag} {cost}" # {rankName} & {nextRankName} is available.
 ```
 
 <h3>Using RankUP API</h3>
