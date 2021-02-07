@@ -31,3 +31,9 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 ```
+
+<h3>Using RankUP API</h3>
+
+```java
+final SkyRankUPAPI skyRankUPAPI = SkyRankUPAPI.getInstance()
+```
