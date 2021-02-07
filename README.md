@@ -2,8 +2,22 @@
 👌 Create rank evolutions for your server.
 
 ### <h3>Requirements to run
-* Java 8+
+* Java 8
 * [Spigot 1.8.8](https://cdn.getbukkit.org/spigot/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar)
+
+### Commands
+<table>
+ <tr>
+  <th>Command</th>
+  <th>Permission</th>
+  <th>Description</th>
+ </tr>
+ <tr>
+  <td>/combat <new delay></td>
+  <td>combatchanger.command.use</td>
+  <td>Change the pvp delay.</td>
+ </tr>
+</table>
 
 <h3>Using RankUP API</h3>
 
