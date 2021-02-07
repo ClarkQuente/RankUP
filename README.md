@@ -162,3 +162,20 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 ```
+
+## Contributors
+<table>
+  <tr>
+    <td align="center">
+     <a href="https://github.com/SkyLinx">
+      <img src="https://avatars.githubusercontent.com/u/59859653?v=4" width="100px;" alt=""/>
+     <br />
+      <sub>
+       <b>SkyLinx</b>
+      </sub>
+     </a>
+     <br />
+     <a href="https://github.com/ViiictorXD/CombatChanger/commits?author=ViiictorXD" title="Code">💻</a>
+   </td>
+  </tr>
+</table>
