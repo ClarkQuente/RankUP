@@ -1,11 +1,13 @@
 # RankUP
 👌 Create rank evolutions for your server.
 
-<h3>Requirements to run</h3>
+### Requirements to run
+
 * Java 8
 * [Spigot 1.8.8](https://cdn.getbukkit.org/spigot/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar)
 
-### Commands
+<h3>Commands</h3>
+
 <table>
  <tr>
   <th>Command</th>
@@ -23,6 +25,50 @@
   <td>Evolve ranks.</td>
  </tr>
 </table>
+
+<h3>Configuration Files</h3>
+
+<h4>Configuration Files</h4>
+config.yml
+
+```yml
+settings:
+  data_storage:
+    storage_type: "SQLITE" # MYSQL or SQLITE
+    mysql_credentials: # Complete only if the storage_type is MYSQL.
+      host: "localhost"
+      port: 3306
+      database: "database_name"
+      username: "root"
+      password: "password"
+    sqlite_file:  # Touch only if the storage_type is SQLITE.
+      name: "rankup_storage"
+  auto_save_data:
+    active: true # false = Disable save data task. Recommended: true
+    check_delay: 5 # In minutes.
+  auto_rank_up:
+    active: false # false = Disable auto rank up task.
+    check_delay: 10 # In seconds.
+  ranks_menu: true
+  rank_up_confirmation: true
+
+view:
+  ranks:
+    title: "Ranks"
+    size: 6
+  confirmation:
+    title: "RankUP - Confirmation"
+    info:
+      - "&fCost: &2$&f{cost}"
+    accept:
+      display: "&aConfirm"
+      description:
+        - "&7Click to confirm."
+    cancel:
+      display: "&cCancel"
+      description:
+        - "&7Click to cancel."
+```
 
 <h3>Using RankUP API</h3>
 
