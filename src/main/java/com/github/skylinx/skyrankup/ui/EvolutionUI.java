@@ -4,7 +4,6 @@ import com.github.skylinx.skyrankup.SkyRankUP;
 import com.github.skylinx.skyrankup.config.LocalConfig;
 import com.github.skylinx.skyrankup.managers.RankManager;
 import com.github.skylinx.skyrankup.objects.PlayerRank;
-import com.github.skylinx.skyrankup.objects.Rank;
 import com.github.skylinx.skyrankup.utils.ItemBuilder;
 import com.henryfabio.minecraft.inventoryapi.editor.InventoryEditor;
 import com.henryfabio.minecraft.inventoryapi.inventory.impl.simple.SimpleInventory;
@@ -22,7 +21,7 @@ public class EvolutionUI extends SimpleInventory {
     private final RankManager rankManager = plugin.getRankManager();
 
     public EvolutionUI() {
-        super("evolution.inventory", LocalConfig.getCONFIRMATION_TITLE(), 6 * 9);
+        super("evolution.inventory", LocalConfig.CONFIRMATION_TITLE, 6 * 9);
     }
 
     @Override
@@ -38,7 +37,7 @@ public class EvolutionUI extends SimpleInventory {
         editor.setItem(13, InventoryItem.of(
                 new ItemBuilder("2a3b8f681daad8bf436cae8da3fe8131f62a162ab81af639c3e0644aa6abac2f")
                         .setDisplayName(rank.getTag() + " §f» " + nextRank.getTag())
-                        .setLore(LocalConfig.getINFO_COST()
+                        .setLore(LocalConfig.INFO_COST
                                 .stream()
                                 .map(l -> l.replace("{cost}", String.valueOf(nextRank.getCost())))
                                 .collect(Collectors.toList())
@@ -62,15 +61,15 @@ public class EvolutionUI extends SimpleInventory {
 
         editor.setItem(39, InventoryItem.of(
                 new ItemBuilder(Material.WOOL, 1, 14)
-                        .setDisplayName(LocalConfig.getCANCEL_DISPLAY())
-                        .setLore(LocalConfig.getCANCEL_DESCRIPTION())
+                        .setDisplayName(LocalConfig.CANCEL_DISPLAY)
+                        .setLore(LocalConfig.CANCEL_DESCRIPTION)
                         .build()
         ).defaultCallback(event -> event.getPlayer().closeInventory()));
 
         editor.setItem(41, InventoryItem.of(
                 new ItemBuilder(Material.WOOL, 1, 5)
-                        .setDisplayName(LocalConfig.getACCEPT_DISPLAY())
-                        .setLore(LocalConfig.getACCEPT_DESCRIPTION())
+                        .setDisplayName(LocalConfig.ACCEPT_DISPLAY)
+                        .setLore(LocalConfig.ACCEPT_DESCRIPTION)
                         .build()
         ).defaultCallback(event -> {
             event.getPlayer().closeInventory();

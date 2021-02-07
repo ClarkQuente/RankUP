@@ -17,9 +17,6 @@ public class PlayerRankSave extends BukkitRunnable {
 
     @Override
     public void run() {
-        if (playerRankManager.getCache().isEmpty())
-            return;
-
         for (val playerRank : playerRankManager.getCache().values()) {
             CompletableFuture.runAsync(() -> databaseFactory.save(playerRank));
 

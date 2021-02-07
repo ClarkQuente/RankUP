@@ -15,7 +15,7 @@ public class RanksUI extends SimpleInventory {
     private final RankManager rankManager = plugin.getRankManager();
 
     public RanksUI() {
-        super("ranks.inventory", LocalConfig.getRANKS_TITLE(), LocalConfig.getRANKS_SIZE() * 9);
+        super("ranks.inventory", LocalConfig.RANKS_TITLE, LocalConfig.RANKS_SIZE * 9);
     }
 
     @Override

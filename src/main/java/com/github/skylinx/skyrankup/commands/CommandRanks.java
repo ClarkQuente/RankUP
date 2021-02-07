@@ -24,34 +24,34 @@ public class CommandRanks {
             target = CommandTarget.PLAYER
     )
     public void ranksCommand(Context<Player> context) {
-        if (LocalConfig.isRANKS_MENU()) {
+        if (LocalConfig.RANKS_MENU) {
             ranksUI.openInventory(context.getSender());
             return;
         }
 
-        MessagesConfig.getRANKS_HEADER().forEach(context::sendMessage);
+        MessagesConfig.RANKS_HEADER.forEach(context::sendMessage);
 
         for (Rank rank : rankManager.getRanks()) {
             val nextRank = rankManager.findByPriority(rank.getPriority() + 1);
 
-            context.sendMessage(MessagesConfig.getRANK_INFO()
+            context.sendMessage(MessagesConfig.RANK_INFO
                     .replace("{rankName}", rank.getName())
                     .replace("{rankTag}", rank.getTag())
                     .replace("{nextRankName}", nextRank == null
-                            ? MessagesConfig.getLAST_RANK()
+                            ? MessagesConfig.LAST_RANK
                             : nextRank.getName())
                     .replace("{nextRankTag}", nextRank == null
-                            ? MessagesConfig.getLAST_RANK()
+                            ? MessagesConfig.LAST_RANK
                             : nextRank.getTag())
                     .replace("{cost}", nextRank == null
-                            ? MessagesConfig.getNO_COST()
-                            : MessagesConfig.getRANK_COST()
+                            ? MessagesConfig.NO_COST
+                            : MessagesConfig.RANK_COST
                             .replace("{cost}", String.valueOf(nextRank.getCost()))
                     )
             );
         }
 
-        MessagesConfig.getRANKS_FOOTER().forEach(context::sendMessage);
+        MessagesConfig.RANKS_FOOTER.forEach(context::sendMessage);
     }
 
 }

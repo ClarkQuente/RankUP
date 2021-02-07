@@ -32,17 +32,17 @@ public class CommandRankUP {
         val nextRank = playerRank.getNextRank();
 
         if (nextRank == null) {
-            context.sendMessage(MessagesConfig.getALREADY_LAST_RANK());
+            context.sendMessage(MessagesConfig.ALREADY_LAST_RANK);
             return;
         }
 
         if (plugin.getEconomy().getBalance(context.getSender()) < nextRank.getCost()) {
-            context.sendMessage(MessagesConfig.getWITHOUT_COINS()
+            context.sendMessage(MessagesConfig.WITHOUT_COINS
                     .replace("{cost}", String.valueOf(nextRank.getCost())));
             return;
         }
 
-        if (LocalConfig.isRANK_UP_CONFIRMATION()) {
+        if (LocalConfig.RANK_UP_CONFIRMATION) {
             new EvolutionUI().openInventory(context.getSender(),
                     viewer -> viewer.getPropertyMap().set("playerRank", playerRank));
             return;

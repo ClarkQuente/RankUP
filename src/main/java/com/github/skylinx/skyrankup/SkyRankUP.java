@@ -114,27 +114,24 @@ public final class SkyRankUP extends JavaPlugin {
         );
 
         // Active AutoRankUP task.
-        if (LocalConfig.isAUTO_RANK_UP())
+        if (LocalConfig.AUTO_RANK_UP)
             // Check AutoRankUP task.
             getScheduler().runTaskTimerAsynchronously(this,
                     new AutoRankUP(playerRankManager, this),
-                    20L * LocalConfig.getRANK_CHECK_DELAY(),
-                    20L * LocalConfig.getRANK_CHECK_DELAY());
+                    20L * LocalConfig.RANK_CHECK_DELAY,
+                    20L * LocalConfig.RANK_CHECK_DELAY);
 
         // Active Auto Save Data task.
-        if (LocalConfig.isAUTO_SAVE_DATA())
+        if (LocalConfig.AUTO_SAVE_DATA)
             // Save data task and remove inactive cache.
             getScheduler().runTaskTimerAsynchronously(this,
                     new PlayerRankSave(playerRankManager, databaseFactory),
-                    1200L * LocalConfig.getSAVE_CHECK_DELAY(),
-                    1200L * LocalConfig.getSAVE_CHECK_DELAY());
+                    1200L * LocalConfig.SAVE_CHECK_DELAY,
+                    1200L * LocalConfig.SAVE_CHECK_DELAY);
     }
 
     @Override
     public void onDisable() {
-        if (playerRankManager.getCache().isEmpty())
-            return;
-
         for (PlayerRank playerRank : playerRankManager.getCache().values()) {
             databaseFactory.save(playerRank);
 
