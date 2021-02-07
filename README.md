@@ -175,7 +175,7 @@ repositories {
       </sub>
      </a>
      <br />
-     <a href="https://github.com/ViiictorXD/CombatChanger/commits?author=ViiictorXD" title="Code">💻</a>
+     <a href="https://github.com/SkyLinx/RankUP/commits?author=SkyLinx" title="Code">💻</a>
    </td>
   </tr>
 </table>
