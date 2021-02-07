@@ -10,28 +10,18 @@ final SkyRankUPAPI skyRankUPAPI = SkyRankUPAPI.getInstance()
 <h3>Using Custom Event</h3>
 
 ```java
-    @EventHandler
-    private void onPlayerRankUP(PlayerRankUPEvent event) {
-        if (event.isCancelled())
-            return;
+@EventHandler
+private void onPlayerRankUP(PlayerRankUPEvent event) {
+    if (event.isCancelled())
+        return;
 
-        val player = event.getPlayer();
+    val player = event.getPlayer();
 
-        player.sendMessage("Custom Event");
-        player.sendMessage("Cost: $" + event.getCost());
-        player.sendMessage("Old Rank Tag: " + event.getOldRank().getTag());
-        player.sendMessage("New Rank Tag: " + event.getNextRank().getTag());
-    }
-```
-
-<h3>Installing with Maven</h3>
-
-```xml
-<dependency>
-    <groupId>com.github.SkyLinx</groupId>
-    <artifactId>RankUP</artifactId>
-    <version>Tag</version>
-</dependency>
+    player.sendMessage("Custom Event");
+    player.sendMessage("Cost: $" + event.getCost());
+    player.sendMessage("Old Rank Tag: " + event.getOldRank().getTag());
+    player.sendMessage("New Rank Tag: " + event.getNextRank().getTag());
+}
 ```
 
 ```xml
