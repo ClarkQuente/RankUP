@@ -4,7 +4,7 @@
 <h3>Using RankUP API</h3>
 
 ```java
-final SkyRankUPAPI skyRankUPAPI = SkyRankUPAPI.getInstance()
+final SkyRankUPAPI skyRankUPAPI = SkyRankUPAPI.getInstance();
 ```
 
 <h3>Using Custom Event</h3>
