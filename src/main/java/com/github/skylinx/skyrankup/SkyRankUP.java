@@ -8,8 +8,8 @@ import com.github.skylinx.skyrankup.listener.PlayerListener;
 import com.github.skylinx.skyrankup.managers.PlayerRankManager;
 import com.github.skylinx.skyrankup.managers.RankManager;
 import com.github.skylinx.skyrankup.objects.PlayerRank;
-import com.github.skylinx.skyrankup.scheduler.AutoRankUP;
-import com.github.skylinx.skyrankup.scheduler.PlayerRankSave;
+import com.github.skylinx.skyrankup.schedulers.AutoRankUP;
+import com.github.skylinx.skyrankup.schedulers.PlayerRankSave;
 import com.github.skylinx.skyrankup.storage.DatabaseFactory;
 import com.github.skylinx.skyrankup.storage.types.MySQLDatabaseType;
 import com.github.skylinx.skyrankup.storage.types.SQLiteDatabaseType;
@@ -26,7 +26,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
 import java.io.IOException;
 
 import static org.bukkit.Bukkit.getPluginManager;

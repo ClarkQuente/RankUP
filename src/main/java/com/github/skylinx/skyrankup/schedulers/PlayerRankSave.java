@@ -1,7 +1,6 @@
-package com.github.skylinx.skyrankup.scheduler;
+package com.github.skylinx.skyrankup.schedulers;
 
 import com.github.skylinx.skyrankup.managers.PlayerRankManager;
-import com.github.skylinx.skyrankup.objects.PlayerRank;
 import com.github.skylinx.skyrankup.storage.DatabaseFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.val;

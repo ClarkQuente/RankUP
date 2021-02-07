@@ -53,66 +53,43 @@ public class PlayerRank {
 
         plugin.getEconomy().withdrawPlayer(Bukkit.getPlayer(this.uniqueId), nextRank.getCost());
 
-        if (!nextRank.getActions().isEmpty())
+        if (!nextRank.getActions().isEmpty()) {
+            val player = Bukkit.getPlayer(this.uniqueId);
+
             for (val action : nextRank.getActions()) {
-                if (action.startsWith("[TITLE]")) {
-                    val value = action.split("->")[1]
-                            .replace("{oldRank}", String.valueOf(rank.getName()))
-                            .replace("{newRank}", nextRank.getName())
-                            .replace("{oldRankTag}", rank.getTag())
-                            .replace("{newRankTag}", nextRank.getTag())
-                            .replace("{player}", this.name)
-                            .replace("&", "§");
+                val value = action.split("->")[1]
+                        .replace("{oldRank}", String.valueOf(rank.getName()))
+                        .replace("{newRank}", nextRank.getName())
+                        .replace("{oldRankTag}", rank.getTag())
+                        .replace("{newRankTag}", nextRank.getTag())
+                        .replace("{player}", this.name)
+                        .replace("&", "§");
 
-                    var title = "";
-                    var subTitle = "";
+                var title = "";
+                var subTitle = "";
 
-                    if (value.contains("{nl}")) {
-                        title = value.split("\\{nl}")[0];
-                        subTitle = value.split("\\{nl}")[1];
+                if (value.contains("{nl}")) {
+                    title = value.split("\\{nl}")[0];
+                    subTitle = value.split("\\{nl}")[1];
+                }
+
+                if (action.startsWith("[TITLE")) {
+                    if (action.contains("-ALL]")) {
+                        new Title(title, subTitle, 50, 50, 50).sendAll();
+                        return;
                     }
 
-                    new Title(title, subTitle, 50, 50, 50)
-                            .send(Bukkit.getPlayer(this.uniqueId));
+                    new Title(title, subTitle, 50, 50, 50).send(player);
                 } else if (action.startsWith("[ACTIONBAR]")) {
-                    val value = action.split("->")[1]
-                            .replace("{oldRank}", String.valueOf(rank.getName()))
-                            .replace("{newRank}", nextRank.getName())
-                            .replace("{oldRankTag}", rank.getTag())
-                            .replace("{newRankTag}", nextRank.getTag())
-                            .replace("{player}", this.name)
-                            .replace("&", "§");
-                    new ActionBar(value).send(Bukkit.getPlayer(this.uniqueId));
-                } else if (action.startsWith("[TITLE-ALL]")) {
-                    val value = action.split("->")[1]
-                            .replace("{oldRank}", String.valueOf(rank.getName()))
-                            .replace("{newRank}", nextRank.getName())
-                            .replace("{oldRankTag}", rank.getTag())
-                            .replace("{newRankTag}", nextRank.getTag())
-                            .replace("{player}", this.name)
-                            .replace("&", "§");
-
-                    var title = "";
-                    var subTitle = "";
-
-                    if (value.contains("{nl}")) {
-                        title = value.split("\\{nl}")[0];
-                        subTitle = value.split("\\{nl}")[1];
+                    if (action.contains("-ALL]")) {
+                        new ActionBar(value).sendAll();
+                        return;
                     }
 
-                    new Title(title, subTitle, 50, 50, 50)
-                            .sendAll();
-                } else if (action.startsWith("[ACTIONBAR-ALL]")) {
-                    val value = action.split("->")[1]
-                            .replace("{oldRank}", String.valueOf(rank.getName()))
-                            .replace("{newRank}", nextRank.getName())
-                            .replace("{oldRankTag}", rank.getTag())
-                            .replace("{newRankTag}", nextRank.getTag())
-                            .replace("{player}", this.name)
-                            .replace("&", "§");
-                    new ActionBar(value).sendAll();
+                    new ActionBar(value).send(player);
                 }
             }
+        }
 
         if (!nextRank.getCommands().isEmpty())
             for (val key : nextRank.getCommands()) {

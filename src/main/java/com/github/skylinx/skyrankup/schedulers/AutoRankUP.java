@@ -1,4 +1,4 @@
-package com.github.skylinx.skyrankup.scheduler;
+package com.github.skylinx.skyrankup.schedulers;
 
 import com.github.skylinx.skyrankup.SkyRankUP;
 import com.github.skylinx.skyrankup.config.LocalConfig;
