@@ -1,0 +1,7 @@
+name: SkyRankUP
+version: @version@
+main: com.github.skylinx.skyrankup.SkyRankUP
+api-version: 1.8
+authors: [ SkyLinx ]
+description: Simple RankUP plugin.
+website: https://github.com/SkyLinx

@@ -1,0 +1,46 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+}
+
+group = 'com.github.skylinx.skyrankup'
+version = '1.0-SNAPSHOT'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    compileOnly files('D:/profile/Desktop/workspace/jar-library/PaperSpigot.jar')
+    compileOnly files('D:/profile/Desktop/workspace/clients/test server/plugins/Vault.jar')
+
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+
+    compile group: 'com.zaxxer', name: 'HikariCP', version: '3.4.5'
+
+    implementation 'com.github.SaiintBrisson.command-framework:bukkit:1.0.0'
+    implementation 'com.github.Marinhodev:ConfigProvider:2.0'
+    implementation 'com.github.HenryFabio:inventory-api:2.0.3'
+
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+}
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        filter ReplaceTokens, tokens: [version: version]
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding("UTF-8")
+}
+
+allprojects {
+    libsDirName = 'D:/profile/Desktop/workspace/clients/test server/plugins'
+}

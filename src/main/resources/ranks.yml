@@ -1,0 +1,58 @@
+ranks:
+  Bandit:
+    name: "Bandit"
+    tag: "&c[Bandit]"
+    priority: 1
+    cost: 50
+    commands:
+      - "100:say {player} rank up {oldRank} to {newRank}"
+      - "100:say {player} rank up {oldRankTag} to {newRankTag}"
+    actions:
+      - "[TITLE]->&d{player}{nl}&7RankUP from {oldRank} &7to {newRank}"
+      - "[ACTIONBAR]->&c{player} &7rankup from {oldRankTag} &7to {newRankTag}"
+    icon:
+      skull_texture: "2fe67f9f8b1bbf80c54e023bfb35404067ca9762b45fadfcf0febecc762a6536"
+      quantity: 1
+      slot: 10
+      display: "&cBandit"
+      description:
+        - "&fCost: &2$&a{cost}"
+  Police:
+    name: "Police"
+    tag: "&b[Police]"
+    priority: 2
+    cost: 500
+    commands:
+    # - "CHANCE:#COMMAND"
+      - "100:say {player} rank up {oldRank} to {newRank}"
+      - "100:say {player} rank up {oldRankTag} to {newRankTag}"
+    actions:
+    # - "[ACTION]->[VALUE]" [TITLE] & [ACTIONBAR]
+      - "[TITLE]->&d{player}{nl}&7RankUP from {oldRankTag} &7to {newRankTag}"
+      - "[ACTIONBAR]->&c{player} &7rankup from {oldRankTag} &7to {newRankTag}"
+    icon:
+      skull_texture: "b4fce7851896e789e682acf6240c6d56a144cf83a6e027c90240b602b3b79966"
+      quantity: 1
+      slot: 11
+      display: "&bPolice"
+      description:
+        - "&fCost: &2$&a{cost}"
+  Random:
+    name: "Random"
+    tag: "&d[Ran&adom]"
+    priority: 3
+    cost: 6940.5
+    commands:
+      - "100:say {player} rank up {oldRank} to {newRank}"
+      - "100:say {player} rank up {oldRankTag} to {newRankTag}"
+    actions:
+      - "[TITLE-ALL]->&d{player}{nl}&7RankUP to last RANK!!!"
+      - "[ACTIONBAR-ALL]->&c{player} &7rankup to last RANK!!!"
+    icon:
+      material: "INK_SACK"
+      durability: 4
+      quantity: 1
+      slot: 12
+      display: "&dRan&adom"
+      description:
+        - "&fCost: &2$&a{cost}"

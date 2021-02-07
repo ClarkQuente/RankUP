@@ -1,0 +1,11 @@
+already_last_rank: "&cYou are already in the last rank."
+without_coins: "&cYou don't have enough coins to rank up. &7(Need: &2$&f{cost}&7)"
+chat_ranks:
+  header:
+    - "&c<------------------------>"
+  footer:
+    - "&c<------------------------>"
+  cost: "&7(&2$&a{cost}&7)"
+  no_cost: ""
+  last_rank: "&cLast Rank"
+  rank_info: " &d> {rankTag} &e➟ {nextRankTag} {cost}" # {rankName} & {nextRankName} is available.
