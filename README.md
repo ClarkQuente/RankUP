@@ -25,6 +25,14 @@ private void onPlayerRankUP(PlayerRankUPEvent event) {
 ```
 
 ```xml
+<dependency>
+    <groupId>com.github.SkyLinx</groupId>
+    <artifactId>RankUP</artifactId>
+    <version>Tag</version>
+</dependency>
+```
+
+```xml
 <repository>
     <id>jitpack.io</id>
     <url>https://jitpack.io</url>
