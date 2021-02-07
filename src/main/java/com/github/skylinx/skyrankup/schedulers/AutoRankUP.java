@@ -16,9 +16,6 @@ public class AutoRankUP extends BukkitRunnable {
 
     @Override
     public void run() {
-        if (!LocalConfig.isAUTO_RANK_UP())
-            return;
-
         for (PlayerRank playerRank : playerRankManager.getCache().values()) {
             if (Bukkit.getPlayer(playerRank.getUniqueId()) == null)
                 continue;

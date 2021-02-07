@@ -3,13 +3,11 @@ package com.github.skylinx.skyrankup.api;
 import com.github.skylinx.skyrankup.SkyRankUP;
 import com.github.skylinx.skyrankup.managers.PlayerRankManager;
 import com.github.skylinx.skyrankup.managers.RankManager;
-import com.github.skylinx.skyrankup.objects.PlayerRank;
 import com.github.skylinx.skyrankup.storage.DatabaseFactory;
-import lombok.val;
 import lombok.var;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.UUID;
 
 public class SkyRankUPAPI {
 
@@ -25,123 +23,93 @@ public class SkyRankUPAPI {
     private final RankManager rankManager = plugin.getRankManager();
 
     // Takes name of the current rank of the informed player.
-    public String getRankName(String playerName) {
-        var playerRank = playerRankManager.findByUniqueId(
-                Bukkit.getPlayer(playerName).getUniqueId());
+    public String getRankName(UUID uniqueId) {
+        var playerRank = playerRankManager.findByUniqueId(uniqueId);
 
         if (playerRank == null)
-            playerRank = databaseFactory.find(playerName);
-
-        if (playerRank == null)
-            return null;
+            playerRank = databaseFactory.find(uniqueId);
 
         return rankManager.findByPriority(playerRank.getRankId()).getName();
     }
 
     // Takes tag of the current rank of the informed player.
-    public String getRankTag(String playerName) {
-        var playerRank = playerRankManager.findByUniqueId(
-                Bukkit.getPlayer(playerName).getUniqueId());
+    public String getRankTag(UUID uniqueId) {
+        var playerRank = playerRankManager.findByUniqueId(uniqueId);
 
         if (playerRank == null)
-            playerRank = databaseFactory.find(playerName);
-
-        if (playerRank == null)
-            return null;
+            playerRank = databaseFactory.find(uniqueId);
 
         return rankManager.findByPriority(playerRank.getRankId()).getTag();
     }
 
     // Takes the name of the next rank of the informed player.
-    public String getNextRankName(String playerName) {
-        var playerRank = playerRankManager.findByUniqueId(
-                Bukkit.getPlayer(playerName).getUniqueId());
+    public String getNextRankName(UUID uniqueId) {
+        var playerRank = playerRankManager.findByUniqueId(uniqueId);
 
         if (playerRank == null)
-            playerRank = databaseFactory.find(playerName);
-
-        if (playerRank == null)
-            return null;
+            playerRank = databaseFactory.find(uniqueId);
 
         return playerRank.getNextRank().getName();
     }
 
     // Takes the tag of the next rank of the informed player.
-    public String getNextRankTag(String playerName) {
-        var playerRank = playerRankManager.findByUniqueId(
-                Bukkit.getPlayer(playerName).getUniqueId());
+    public String getNextRankTag(UUID uniqueId) {
+        var playerRank = playerRankManager.findByUniqueId(uniqueId);
 
         if (playerRank == null)
-            playerRank = databaseFactory.find(playerName);
-
-        if (playerRank == null)
-            return null;
+            playerRank = databaseFactory.find(uniqueId);
 
         return playerRank.getNextRank().getTag();
     }
 
     // Takes icon of the current rank of the informed player.
-    public ItemStack getRankIcon(String playerName) {
-        var playerRank = playerRankManager.findByUniqueId(
-                Bukkit.getPlayer(playerName).getUniqueId());
+    public ItemStack getRankIcon(UUID uniqueId) {
+        var playerRank = playerRankManager.findByUniqueId(uniqueId);
 
         if (playerRank == null)
-            playerRank = databaseFactory.find(playerName);
-
-        if (playerRank == null)
-            return null;
+            playerRank = databaseFactory.find(uniqueId);
 
         return rankManager.findByPriority(playerRank.getRankId()).getIcon().clone();
     }
 
     // Takes the icon of the next rank of the informed player.
-    public ItemStack getNextRankIcon(String playerName) {
-        var playerRank = playerRankManager.findByUniqueId(
-                Bukkit.getPlayer(playerName).getUniqueId());
+    public ItemStack getNextRankIcon(UUID uniqueId) {
+        var playerRank = playerRankManager.findByUniqueId(uniqueId);
 
         if (playerRank == null)
-            playerRank = databaseFactory.find(playerName);
-
-        if (playerRank == null)
-            return null;
+            playerRank = databaseFactory.find(uniqueId);
 
         return playerRank.getNextRank().getIcon().clone();
     }
 
     // Sets the rank of the informed player.
-    public void setPlayerRank(String playerName, String rankName) {
-        var playerRank = playerRankManager.findByUniqueId(
-                Bukkit.getPlayer(playerName).getUniqueId());
+    public void setPlayerRank(UUID uniqueId, String rankName) {
+        var playerRank = playerRankManager.findByUniqueId(uniqueId);
 
         boolean cache = false;
         if (playerRank == null) {
-            playerRank = databaseFactory.find(playerName);
+            playerRank = databaseFactory.find(uniqueId);
             cache = true;
         }
 
-        if (playerRank == null)
-            return;
+        if (playerRank != null && rankManager.findByName(rankName) != null) {
+            playerRank.setRankId(rankManager.findByName(rankName).getPriority());
+            playerRank.setModified(true);
 
-        playerRank.setRankId(rankManager.findByName(rankName).getPriority());
-        playerRank.setModified(true);
-
-        if (cache)
-            playerRankManager.insertCache(playerRank);
+            if (cache)
+                playerRankManager.insertCache(playerRank);
+        }
     }
 
     // Evolves the rank of the informed player.
-    public void evolveRank(String playerName) {
-        var playerRank = playerRankManager.findByUniqueId(
-                Bukkit.getPlayer(playerName).getUniqueId());
+    public void evolveRank(UUID uniqueId) {
+        var playerRank = playerRankManager.findByUniqueId(uniqueId);
 
         boolean cache = false;
         if (playerRank == null) {
-            playerRank = databaseFactory.find(playerName);
+            playerRank = databaseFactory.find(uniqueId);
             cache = true;
         }
-
-        if (playerRank == null)
-            return;
 
         if (playerRank.getNextRank() == null)
             return;
