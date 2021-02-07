@@ -1,6 +1,12 @@
 # RankUP
 👌 Create rank evolutions for your server.
 
+<h3>Using RankUP API</h3>
+
+```java
+final SkyRankUPAPI skyRankUPAPI = SkyRankUPAPI.getInstance()
+```
+
 <h3>Installing with Maven</h3>
 
 ```xml
@@ -30,10 +36,4 @@ dependencies {
 repositories {
     maven { url 'https://jitpack.io' }
 }
-```
-
-<h3>Using RankUP API</h3>
-
-```java
-final SkyRankUPAPI skyRankUPAPI = SkyRankUPAPI.getInstance()
 ```
