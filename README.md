@@ -1,7 +1,7 @@
 # RankUP
 👌 Create rank evolutions for your server.
 
-### <h3>Requirements to run
+<h3>Requirements to run</h3>
 * Java 8
 * [Spigot 1.8.8](https://cdn.getbukkit.org/spigot/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar)
 
